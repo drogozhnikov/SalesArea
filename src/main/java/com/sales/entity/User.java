@@ -30,7 +30,7 @@ public class User {
     private String name;
 
     @Column(name = "role")
-    private UserRole role;
+    private String role;
 
     @Column(name = "created")
     private Date created;
