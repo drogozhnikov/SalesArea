@@ -23,7 +23,7 @@
                     <user>postgres</user>
                     <password>4180</password>
                     <url>jdbc:postgresql://localhost:5432/postgres</url>
-                    <defaultSchema>lessons</defaultSchema>
+                    <defaultSchema>sales</defaultSchema>
                     <cleanDisabled>false</cleanDisabled>
                 </configuration>
             </plugin>
@@ -136,6 +136,24 @@
             <artifactId>string-utils</artifactId>
             <version>1.1.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.2.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.1.6.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+        </dependency>
+
 
     </dependencies>
 
