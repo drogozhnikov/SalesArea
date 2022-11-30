@@ -1,9 +1,6 @@
 package com.sales.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -17,18 +14,23 @@ import java.sql.Date;
 public class Company {
 
     @Id
+    @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NonNull
     @Column(name = "name")
     private String name;
 
+    @NonNull
     @Column(name = "email")
     private String email;
 
+    @NonNull
     @Column(name = "created")
     private Date created;
 
+    @NonNull
     @Column(name = "description")
     private String description;
 }

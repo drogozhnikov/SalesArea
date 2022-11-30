@@ -1,5 +1,6 @@
 package com.sales.repository;
 
+import com.sales.entity.Company;
 import com.sales.entity.User;
 
 import java.util.List;
