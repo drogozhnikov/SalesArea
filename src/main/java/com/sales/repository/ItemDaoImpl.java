@@ -44,8 +44,8 @@ public class ItemDaoImpl implements ItemDao {
     public void deleteItem(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Item item = session.load(Item.class, id);
-        Optional<Item> optUser = Optional.ofNullable(item);
-        if (!optUser.isPresent()) {
+        Optional<Item> optItem = Optional.ofNullable(item);
+        if (!optItem.isPresent()) {
             session.delete(item);
         }
     }

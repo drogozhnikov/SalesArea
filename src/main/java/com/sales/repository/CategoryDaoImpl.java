@@ -45,8 +45,8 @@ public class CategoryDaoImpl implements CategoryDao {
     public void deleteCategory(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Category category = session.load(Category.class, id);
-        Optional<Category> optCompany = Optional.ofNullable(category);
-        if(!optCompany.isPresent()){
+        Optional<Category> optCategory = Optional.ofNullable(category);
+        if(!optCategory.isPresent()){
             session.delete(category);
         }
     }

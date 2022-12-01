@@ -17,6 +17,16 @@ public class ApplicationConfiguration {
 
 
     @Bean
+    public PositionDao getPositionDao(SessionFactory sessionFactory) {
+        return new PositionDaoImpl(sessionFactory);
+    }
+
+    @Bean
+    public PositionService getItemService(PositionDao positionDao, MessageService messageService) {
+        return new PositionService(positionDao, messageService);
+    }
+
+    @Bean
     public ItemDao getItemDao(SessionFactory sessionFactory) {
         return new ItemDaoImpl(sessionFactory);
     }
