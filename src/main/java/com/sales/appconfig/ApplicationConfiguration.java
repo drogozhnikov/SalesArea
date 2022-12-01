@@ -1,9 +1,7 @@
 package com.sales.appconfig;
 
-import com.sales.repository.CompanyDao;
-import com.sales.repository.CompanyDaoImpl;
-import com.sales.repository.UserDao;
-import com.sales.repository.UserDaoImpl;
+import com.sales.repository.*;
+import com.sales.service.CategoryService;
 import com.sales.service.CompanyService;
 import com.sales.service.MessageService;
 import com.sales.service.UserService;
@@ -20,6 +18,16 @@ public class ApplicationConfiguration {
         return new MessageService(messageSource);
     }
 
+
+    @Bean
+    public CategoryDao getCategoryDao(SessionFactory sessionFactory) {
+        return new CategoryDaoImpl(sessionFactory);
+    }
+
+    @Bean
+    public CategoryService getCategoryService(CategoryDao categoryDao, MessageService messageService) {
+        return new CategoryService(categoryDao, messageService);
+    }
 
     @Bean
     public UserDao getUserDao(SessionFactory sessionFactory) {
