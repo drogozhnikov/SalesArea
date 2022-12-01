@@ -1,6 +1,6 @@
 package com.sales.service;
 
-import com.sales.entity.Company;
+import com.sales.entity.CompanyEntity;
 import com.sales.repository.CompanyDao;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,23 +17,23 @@ public class CompanyService {
     }
 
     @Transactional
-    public List<Company> getAllCompany() {
+    public List<CompanyEntity> getAllCompany() {
         return companyDao.getAllCompany();
     }
 
     @Transactional
-    public Company getCompany(int id) {
+    public CompanyEntity getCompany(int id) {
         return companyDao.getCompany(id);
     }
 
     @Transactional
-    public void addCompany(Company company) {
-        companyDao.addCompany(company);
+    public void addCompany(CompanyEntity companyEntity) {
+        companyDao.addCompany(companyEntity);
     }
 
     @Transactional
-    public void updateCompany(Company company) {
-        companyDao.updateCompany(company);
+    public void updateCompany(CompanyEntity companyEntity) {
+        companyDao.updateCompany(companyEntity);
     }
 
     @Transactional

@@ -1,6 +1,6 @@
 package com.sales.controller;
 
-import com.sales.entity.Item;
+import com.sales.entity.ItemEntity;
 import com.sales.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,27 +17,27 @@ public class ItemController {
     }
 
     @GetMapping("/all")
-    public List<Item> getAllUsers() {
+    public List<ItemEntity> getAllItems() {
         return itemService.getAllItem();
     }
 
     @GetMapping("/{id}")
-    public Item getUserById(@PathVariable("id") int id) {
+    public ItemEntity getItemById(@PathVariable("id") int id) {
         return itemService.getItem(id);
     }
 
     @PostMapping("/")
-    public void createUser(@RequestBody Item item) {
-        itemService.addItem(item);
+    public void createItem(@RequestBody ItemEntity itemEntity) {
+        itemService.addItem(itemEntity);
     }
 
     @PutMapping("/")
-    public void updateUser(@RequestBody Item item) {
-        itemService.updateItem(item);
+    public void updateItem(@RequestBody ItemEntity itemEntity) {
+        itemService.updateItem(itemEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") int id) {
+    public void deleteItem(@PathVariable("id") int id) {
         itemService.deleteItem(id);
     }
 }

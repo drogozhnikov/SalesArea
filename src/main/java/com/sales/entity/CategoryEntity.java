@@ -3,35 +3,28 @@ package com.sales.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
 @Entity
-@Table(name = "item")
-public class Item {
+@Table(name = "category")
+public class CategoryEntity {
 
     @Id
     @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     @NonNull
     @Column(name = "name")
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "parent_category")
+    private CategoryEntity parentCategoryEntity;
+
     @Column(name = "description")
     private String description;
-
-    @NonNull
-    @Column(name = "created")
-    private Date created;
-
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-
 }

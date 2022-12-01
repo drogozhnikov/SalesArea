@@ -1,6 +1,6 @@
 package com.sales.service;
 
-import com.sales.entity.Category;
+import com.sales.entity.CategoryEntity;
 import com.sales.repository.CategoryDao;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,23 +17,23 @@ public class CategoryService {
     }
 
     @Transactional
-    public List<Category> getAllCategory() {
+    public List<CategoryEntity> getAllCategory() {
         return categoryDao.getAllCategory();
     }
 
     @Transactional
-    public Category getCategory(int id) {
+    public CategoryEntity getCategory(int id) {
         return categoryDao.getCategory(id);
     }
 
     @Transactional
-    public void addCategory(Category category) {
-        categoryDao.addCategory(category);
+    public void addCategory(CategoryEntity categoryEntity) {
+        categoryDao.addCategory(categoryEntity);
     }
 
     @Transactional
-    public void updateCategory(Category category) {
-        categoryDao.updateCategory(category);
+    public void updateCategory(CategoryEntity categoryEntity) {
+        categoryDao.updateCategory(categoryEntity);
     }
 
     @Transactional

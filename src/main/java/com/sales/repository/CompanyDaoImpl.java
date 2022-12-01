@@ -1,6 +1,6 @@
 package com.sales.repository;
 
-import com.sales.entity.Company;
+import com.sales.entity.CompanyEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,35 +18,35 @@ public class CompanyDaoImpl implements CompanyDao {
     @Override
     public List getAllCompany() {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.createQuery("from Company ").list();
+        return session.createQuery("from CompanyEntity ").list();
     }
 
     @Override
-    public Company getCompany(int id) {
+    public CompanyEntity getCompany(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.get(Company.class, id);
+        return session.get(CompanyEntity.class, id);
     }
 
     @Override
-    public Company addCompany(Company company) {
+    public CompanyEntity addCompany(CompanyEntity companyEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.save(company);
-        return company;
+        session.save(companyEntity);
+        return companyEntity;
     }
 
     @Override
-    public void updateCompany(Company company) {
+    public void updateCompany(CompanyEntity companyEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(company);
+        session.update(companyEntity);
     }
 
     @Override
     public void deleteCompany(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Company company = session.load(Company.class, id);
-        Optional<Company> optCompany = Optional.ofNullable(company);
+        CompanyEntity companyEntity = session.load(CompanyEntity.class, id);
+        Optional<CompanyEntity> optCompany = Optional.ofNullable(companyEntity);
         if(!optCompany.isPresent()){
-            session.delete(company);
+            session.delete(companyEntity);
         }
     }
 }

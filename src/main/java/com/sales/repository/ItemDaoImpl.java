@@ -1,6 +1,6 @@
 package com.sales.repository;
 
-import com.sales.entity.Item;
+import com.sales.entity.ItemEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,35 +18,35 @@ public class ItemDaoImpl implements ItemDao {
     @Override
     public List getAllItem() {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.createQuery("from Item").list();
+        return session.createQuery("from ItemEntity").list();
     }
 
     @Override
-    public Item getItem(int id) {
+    public ItemEntity getItem(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (Item) session.get(Item.class, id);
+        return (ItemEntity) session.get(ItemEntity.class, id);
     }
 
     @Override
-    public Item addItem(Item item) {
+    public ItemEntity addItem(ItemEntity itemEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.save(item);
-        return item;
+        session.save(itemEntity);
+        return itemEntity;
     }
 
     @Override
-    public void updateItem(Item item) {
+    public void updateItem(ItemEntity itemEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(item);
+        session.update(itemEntity);
     }
 
     @Override
     public void deleteItem(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Item item = session.load(Item.class, id);
-        Optional<Item> optItem = Optional.ofNullable(item);
+        ItemEntity itemEntity = session.load(ItemEntity.class, id);
+        Optional<ItemEntity> optItem = Optional.ofNullable(itemEntity);
         if (!optItem.isPresent()) {
-            session.delete(item);
+            session.delete(itemEntity);
         }
     }
 }

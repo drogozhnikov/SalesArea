@@ -1,18 +1,18 @@
 package com.sales.repository;
 
-import com.sales.entity.Company;
+import com.sales.entity.CompanyEntity;
 
 import java.util.List;
 
 public interface CompanyDao {
 
-    public List<Company> getAllCompany();
+    public List<CompanyEntity> getAllCompany();
 
-    public Company getCompany(int id);
+    public CompanyEntity getCompany(int id);
 
-    public Company addCompany(Company company);
+    public CompanyEntity addCompany(CompanyEntity companyEntity);
 
-    public void updateCompany(Company company);
+    public void updateCompany(CompanyEntity companyEntity);
 
     public void deleteCompany(int id);
 }

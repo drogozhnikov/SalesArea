@@ -1,6 +1,6 @@
 package com.sales.controller;
 
-import com.sales.entity.Category;
+import com.sales.entity.CategoryEntity;
 import com.sales.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,27 +17,27 @@ public class CategoryController {
     }
 
     @GetMapping("/all")
-    public List<Category> getAllUsers() {
+    public List<CategoryEntity> getAllCategories() {
         return categoryService.getAllCategory();
     }
 
     @GetMapping("/{id}")
-    public Category getUserById(@PathVariable("id") int id) {
+    public CategoryEntity getCategoryById(@PathVariable("id") int id) {
         return categoryService.getCategory(id);
     }
 
     @PostMapping("/")
-    public void createUser(@RequestBody Category category) {
-        categoryService.addCategory(category);
+    public void createCategory(@RequestBody CategoryEntity categoryEntity) {
+        categoryService.addCategory(categoryEntity);
     }
 
     @PutMapping("/")
-    public void updateUser(@RequestBody Category category) {
-        categoryService.updateCategory(category);
+    public void updateCategory(@RequestBody CategoryEntity categoryEntity) {
+        categoryService.updateCategory(categoryEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") int id) {
+    public void deleteCategory(@PathVariable("id") int id) {
         categoryService.deleteCategory(id);
     }
 }

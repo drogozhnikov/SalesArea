@@ -1,6 +1,6 @@
 package com.sales.repository;
 
-import com.sales.entity.Position;
+import com.sales.entity.PositionEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,35 +18,35 @@ public class PositionDaoImpl implements PositionDao {
     @Override
     public List getAllPosition() {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.createQuery("from Position").list();
+        return session.createQuery("from PositionEntity").list();
     }
 
     @Override
-    public Position getPosition(int id) {
+    public PositionEntity getPosition(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (Position) session.get(Position.class, id);
+        return (PositionEntity) session.get(PositionEntity.class, id);
     }
 
     @Override
-    public Position addPosition(Position position) {
+    public PositionEntity addPosition(PositionEntity positionEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.save(position);
-        return position;
+        session.save(positionEntity);
+        return positionEntity;
     }
 
     @Override
-    public void updatePosition(Position position) {
+    public void updatePosition(PositionEntity positionEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(position);
+        session.update(positionEntity);
     }
 
     @Override
     public void deletePosition(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Position position = session.load(Position.class, id);
-        Optional<Position> optPosition = Optional.ofNullable(position);
+        PositionEntity positionEntity = session.load(PositionEntity.class, id);
+        Optional<PositionEntity> optPosition = Optional.ofNullable(positionEntity);
         if (!optPosition.isPresent()) {
-            session.delete(position);
+            session.delete(positionEntity);
         }
     }
 }

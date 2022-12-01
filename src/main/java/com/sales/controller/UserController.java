@@ -1,6 +1,6 @@
 package com.sales.controller;
 
-import com.sales.entity.User;
+import com.sales.entity.UserEntity;
 import com.sales.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +17,23 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public List<User> getAllUsers() {
+    public List<UserEntity> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable("id") int id) {
+    public UserEntity getUserById(@PathVariable("id") int id) {
         return userService.getUser(id);
     }
 
     @PostMapping("/")
-    public void createUser(@RequestBody User user) {
-        userService.addUser(user);
+    public void createUser(@RequestBody UserEntity userEntity) {
+        userService.addUser(userEntity);
     }
 
     @PutMapping("/")
-    public void updateUser(@RequestBody User user) {
-        userService.updateUser(user);
+    public void updateUser(@RequestBody UserEntity userEntity) {
+        userService.updateUser(userEntity);
     }
 
     @DeleteMapping("/{id}")

@@ -1,6 +1,6 @@
 package com.sales.service;
 
-import com.sales.entity.Item;
+import com.sales.entity.ItemEntity;
 import com.sales.repository.ItemDao;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,23 +17,23 @@ public class ItemService {
     }
 
     @Transactional
-    public List<Item> getAllItem() {
+    public List<ItemEntity> getAllItem() {
         return itemDao.getAllItem();
     }
 
     @Transactional
-    public Item getItem(int id) {
+    public ItemEntity getItem(int id) {
         return itemDao.getItem(id);
     }
 
     @Transactional
-    public void addItem(Item item) {
-        itemDao.addItem(item);
+    public void addItem(ItemEntity itemEntity) {
+        itemDao.addItem(itemEntity);
     }
 
     @Transactional
-    public void updateItem(Item item) {
-        itemDao.updateItem(item);
+    public void updateItem(ItemEntity itemEntity) {
+        itemDao.updateItem(itemEntity);
     }
 
     @Transactional

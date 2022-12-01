@@ -1,6 +1,6 @@
 package com.sales.service;
 
-import com.sales.entity.User;
+import com.sales.entity.UserEntity;
 import com.sales.repository.UserDao;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,23 +17,23 @@ public class UserService {
     }
 
     @Transactional
-    public List<User> getAllUsers() {
+    public List<UserEntity> getAllUsers() {
         return userDao.getAllUsers();
     }
 
     @Transactional
-    public User getUser(int id) {
+    public UserEntity getUser(int id) {
         return userDao.getUser(id);
     }
 
     @Transactional
-    public void addUser(User user) {
-        userDao.addUser(user);
+    public void addUser(UserEntity userEntity) {
+        userDao.addUser(userEntity);
     }
 
     @Transactional
-    public void updateUser(User user) {
-        userDao.updateUser(user);
+    public void updateUser(UserEntity userEntity) {
+        userDao.updateUser(userEntity);
     }
 
     @Transactional

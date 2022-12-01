@@ -3,14 +3,15 @@ package com.sales.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
 @Entity
-@Table(name = "category")
-public class Category {
+@Table(name = "company")
+public class CompanyEntity {
 
     @Id
     @NonNull
@@ -21,10 +22,15 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "parent_category")
-    private Category parentCategory;
+    @NonNull
+    @Column(name = "email")
+    private String email;
 
+    @NonNull
+    @Column(name = "created")
+    private Date created;
+
+    @NonNull
     @Column(name = "description")
     private String description;
 }

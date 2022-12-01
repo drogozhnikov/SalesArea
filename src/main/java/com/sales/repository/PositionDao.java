@@ -1,18 +1,18 @@
 package com.sales.repository;
 
-import com.sales.entity.Position;
+import com.sales.entity.PositionEntity;
 
 import java.util.List;
 
 public interface PositionDao {
 
-    public List<Position> getAllPosition();
+    public List<PositionEntity> getAllPosition();
 
-    public Position getPosition(int id);
+    public PositionEntity getPosition(int id);
 
-    public Position addPosition(Position position);
+    public PositionEntity addPosition(PositionEntity positionEntity);
 
-    public void updatePosition(Position position);
+    public void updatePosition(PositionEntity positionEntity);
 
     public void deletePosition(int id);
 }

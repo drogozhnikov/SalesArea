@@ -1,19 +1,18 @@
 package com.sales.repository;
 
-import com.sales.entity.Company;
-import com.sales.entity.User;
+import com.sales.entity.UserEntity;
 
 import java.util.List;
 
 public interface UserDao {
 
-    public List<User> getAllUsers();
+    public List<UserEntity> getAllUsers();
 
-    public User getUser(int id);
+    public UserEntity getUser(int id);
 
-    public User addUser(User user);
+    public UserEntity addUser(UserEntity userEntity);
 
-    public void updateUser(User user);
+    public void updateUser(UserEntity userEntity);
 
     public void deleteUser(int id);
 }

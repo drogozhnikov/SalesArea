@@ -1,6 +1,6 @@
 package com.sales.controller;
 
-import com.sales.entity.Company;
+import com.sales.entity.CompanyEntity;
 import com.sales.service.CompanyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,27 +17,27 @@ public class CompanyController {
     }
 
     @GetMapping("/all")
-    public List<Company> getAllUsers() {
+    public List<CompanyEntity> getAllCompanies() {
         return companyService.getAllCompany();
     }
 
     @GetMapping("/{id}")
-    public Company getUserById(@PathVariable("id") int id) {
+    public CompanyEntity getCompanyById(@PathVariable("id") int id) {
         return companyService.getCompany(id);
     }
 
     @PostMapping("/")
-    public void createUser(@RequestBody Company company) {
-        companyService.addCompany(company);
+    public void createCompany(@RequestBody CompanyEntity companyEntity) {
+        companyService.addCompany(companyEntity);
     }
 
     @PutMapping("/")
-    public void updateUser(@RequestBody Company company) {
-        companyService.updateCompany(company);
+    public void updateCompany(@RequestBody CompanyEntity companyEntity) {
+        companyService.updateCompany(companyEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") int id) {
+    public void deleteCompany(@PathVariable("id") int id) {
         companyService.deleteCompany(id);
     }
 }

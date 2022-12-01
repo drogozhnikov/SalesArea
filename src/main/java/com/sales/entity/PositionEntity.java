@@ -11,7 +11,7 @@ import java.sql.Date;
 @Builder
 @Entity
 @Table(name = "position")
-public class Position {
+public class PositionEntity {
 
     @Id
     @NonNull
@@ -21,17 +21,17 @@ public class Position {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "item_id")
-    private Item item;
+    private ItemEntity itemEntity;
 
     @NonNull
     @ManyToOne
     @JoinColumn(name = "company_id")
-    private Company company;
+    private CompanyEntity companyEntity;
 
     @NonNull
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private User createdBy;
+    private UserEntity createdBy;
 
     @NonNull
     @Column(name = "created")

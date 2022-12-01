@@ -10,8 +10,8 @@ import java.sql.Date;
 @Data
 @Builder
 @Entity
-@Table(name = "company")
-public class Company {
+@Table(name = "users")
+public class UserEntity {
 
     @Id
     @NonNull
@@ -19,18 +19,31 @@ public class Company {
     private long id;
 
     @NonNull
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username")
+    private String username;
 
     @NonNull
     @Column(name = "email")
     private String email;
 
     @NonNull
+    @Column(name = "name")
+    private String name;
+
+    @NonNull
+    @Column(name = "role")
+    private String role;
+
+    @NonNull
     @Column(name = "created")
     private Date created;
 
     @NonNull
-    @Column(name = "description")
-    private String description;
+    @Column(name = "updated")
+    private Date updated;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private CompanyEntity companyEntity;
 }

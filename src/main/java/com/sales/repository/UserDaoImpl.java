@@ -1,6 +1,6 @@
 package com.sales.repository;
 
-import com.sales.entity.User;
+import com.sales.entity.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,35 +18,35 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List getAllUsers() {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.createQuery("from User").list();
+        return session.createQuery("from UserEntity").list();
     }
 
     @Override
-    public User getUser(int id) {
+    public UserEntity getUser(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (User) session.get(User.class, id);
+        return (UserEntity) session.get(UserEntity.class, id);
     }
 
     @Override
-    public User addUser(User user) {
+    public UserEntity addUser(UserEntity userEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.save(user);
-        return user;
+        session.save(userEntity);
+        return userEntity;
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser(UserEntity userEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(user);
+        session.update(userEntity);
     }
 
     @Override
     public void deleteUser(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = session.load(User.class, id);
-        Optional<User> optUser = Optional.ofNullable(user);
+        UserEntity userEntity = session.load(UserEntity.class, id);
+        Optional<UserEntity> optUser = Optional.ofNullable(userEntity);
         if(!optUser.isPresent()){
-            session.delete(user);
+            session.delete(userEntity);
         }
     }
 

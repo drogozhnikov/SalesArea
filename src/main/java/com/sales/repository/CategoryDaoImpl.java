@@ -1,7 +1,6 @@
 package com.sales.repository;
 
-import com.sales.entity.Category;
-import com.sales.entity.Company;
+import com.sales.entity.CategoryEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -19,35 +18,35 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public List getAllCategory() {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.createQuery("from Category ").list();
+        return session.createQuery("from CategoryEntity ").list();
     }
 
     @Override
-    public Category getCategory(int id) {
+    public CategoryEntity getCategory(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.get(Category.class, id);
+        return session.get(CategoryEntity.class, id);
     }
 
     @Override
-    public Category addCategory(Category category) {
+    public CategoryEntity addCategory(CategoryEntity categoryEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.save(category);
-        return category;
+        session.save(categoryEntity);
+        return categoryEntity;
     }
 
     @Override
-    public void updateCategory(Category category) {
+    public void updateCategory(CategoryEntity categoryEntity) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(category);
+        session.update(categoryEntity);
     }
 
     @Override
     public void deleteCategory(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Category category = session.load(Category.class, id);
-        Optional<Category> optCategory = Optional.ofNullable(category);
+        CategoryEntity categoryEntity = session.load(CategoryEntity.class, id);
+        Optional<CategoryEntity> optCategory = Optional.ofNullable(categoryEntity);
         if(!optCategory.isPresent()){
-            session.delete(category);
+            session.delete(categoryEntity);
         }
     }
 }

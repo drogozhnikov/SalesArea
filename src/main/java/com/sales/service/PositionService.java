@@ -1,7 +1,6 @@
 package com.sales.service;
 
-import com.sales.entity.Position;
-import com.sales.entity.User;
+import com.sales.entity.PositionEntity;
 import com.sales.repository.PositionDao;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,23 +17,23 @@ public class PositionService {
     }
 
     @Transactional
-    public List<Position> getAllPosition() {
+    public List<PositionEntity> getAllPosition() {
         return positionDao.getAllPosition();
     }
 
     @Transactional
-    public Position getPosition(int id) {
+    public PositionEntity getPosition(int id) {
         return positionDao.getPosition(id);
     }
 
     @Transactional
-    public void addPosition(Position position) {
-        positionDao.addPosition(position);
+    public void addPosition(PositionEntity positionEntity) {
+        positionDao.addPosition(positionEntity);
     }
 
     @Transactional
-    public void updatePosition(Position position) {
-        positionDao.updatePosition(position);
+    public void updatePosition(PositionEntity positionEntity) {
+        positionDao.updatePosition(positionEntity);
     }
 
     @Transactional

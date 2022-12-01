@@ -1,13 +1,13 @@
 package com.sales.controller;
 
-import com.sales.entity.Position;
+import com.sales.entity.PositionEntity;
 import com.sales.service.PositionService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/items")
+@RequestMapping("/api/positions")
 public class PositionController {
 
     private PositionService positionService;
@@ -17,27 +17,27 @@ public class PositionController {
     }
 
     @GetMapping("/all")
-    public List<Position> getAllUsers() {
+    public List<PositionEntity> getAllPositions() {
         return positionService.getAllPosition();
     }
 
     @GetMapping("/{id}")
-    public Position getUserById(@PathVariable("id") int id) {
+    public PositionEntity getPositionById(@PathVariable("id") int id) {
         return positionService.getPosition(id);
     }
 
     @PostMapping("/")
-    public void createUser(@RequestBody Position position) {
-        positionService.addPosition(position);
+    public void createPosition(@RequestBody PositionEntity positionEntity) {
+        positionService.addPosition(positionEntity);
     }
 
     @PutMapping("/")
-    public void updateUser(@RequestBody Position position) {
-        positionService.updatePosition(position);
+    public void updatePosition(@RequestBody PositionEntity positionEntity) {
+        positionService.updatePosition(positionEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") int id) {
+    public void deletePosition(@PathVariable("id") int id) {
         positionService.deletePosition(id);
     }
 }

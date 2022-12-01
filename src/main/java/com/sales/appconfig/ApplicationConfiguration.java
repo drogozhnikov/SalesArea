@@ -22,7 +22,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public PositionService getItemService(PositionDao positionDao, MessageService messageService) {
+    public PositionService getPositionService(PositionDao positionDao, MessageService messageService) {
         return new PositionService(positionDao, messageService);
     }
 
