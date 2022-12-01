@@ -1,10 +1,7 @@
 package com.sales.appconfig;
 
 import com.sales.repository.*;
-import com.sales.service.CategoryService;
-import com.sales.service.CompanyService;
-import com.sales.service.MessageService;
-import com.sales.service.UserService;
+import com.sales.service.*;
 import org.hibernate.SessionFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +15,16 @@ public class ApplicationConfiguration {
         return new MessageService(messageSource);
     }
 
+
+    @Bean
+    public ItemDao getItemDao(SessionFactory sessionFactory) {
+        return new ItemDaoImpl(sessionFactory);
+    }
+
+    @Bean
+    public ItemService getItemService(ItemDao itemDao, MessageService messageService) {
+        return new ItemService(itemDao, messageService);
+    }
 
     @Bean
     public CategoryDao getCategoryDao(SessionFactory sessionFactory) {
