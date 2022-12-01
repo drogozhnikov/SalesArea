@@ -3,6 +3,7 @@ package com.sales.appconfig;
 import com.sales.repository.*;
 import com.sales.service.*;
 import org.hibernate.SessionFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,9 @@ public class ApplicationConfiguration {
     public MessageService getMessageService(MessageSource messageSource) {
         return new MessageService(messageSource);
     }
+
+    @Bean
+    public ModelMapper getModelMapper(){ return new ModelMapper();}
 
 
     @Bean

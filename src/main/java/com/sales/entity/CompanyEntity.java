@@ -14,23 +14,18 @@ import java.sql.Date;
 public class CompanyEntity {
 
     @Id
-    @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NonNull
     @Column(name = "name")
     private String name;
 
-    @NonNull
     @Column(name = "email")
     private String email;
 
-    @NonNull
     @Column(name = "created")
     private Date created;
 
-    @NonNull
     @Column(name = "description")
     private String description;
 }

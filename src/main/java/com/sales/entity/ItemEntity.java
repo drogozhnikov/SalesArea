@@ -14,21 +14,18 @@ import java.sql.Date;
 public class ItemEntity {
 
     @Id
-    @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NonNull
+
     @Column(name = "name")
     private String name;
 
     @Column(name = "description")
     private String description;
 
-    @NonNull
     @Column(name = "created")
     private Date created;
 
-    @NonNull
     @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryEntity categoryEntity;

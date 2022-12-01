@@ -13,11 +13,9 @@ import javax.persistence.*;
 public class CategoryEntity {
 
     @Id
-    @NonNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NonNull
     @Column(name = "name")
     private String name;
 
