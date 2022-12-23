@@ -1,9 +1,11 @@
 package com.sales.service;
 
 import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
+@Component
 public class MessageService {
 
     private final MessageSource messageSource;

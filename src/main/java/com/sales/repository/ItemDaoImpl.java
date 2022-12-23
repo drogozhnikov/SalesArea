@@ -3,10 +3,12 @@ package com.sales.repository;
 import com.sales.entity.ItemEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ItemDaoImpl implements ItemDao {
 
     private SessionFactory sessionFactory;

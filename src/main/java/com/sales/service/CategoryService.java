@@ -2,10 +2,12 @@ package com.sales.service;
 
 import com.sales.entity.CategoryEntity;
 import com.sales.repository.CategoryDao;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Component
 public class CategoryService {
 
     private CategoryDao categoryDao;

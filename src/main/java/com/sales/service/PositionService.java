@@ -2,10 +2,12 @@ package com.sales.service;
 
 import com.sales.entity.PositionEntity;
 import com.sales.repository.PositionDao;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Component
 public class PositionService {
 
     private PositionDao positionDao;

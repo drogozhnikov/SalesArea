@@ -2,10 +2,12 @@ package com.sales.service;
 
 import com.sales.entity.CompanyEntity;
 import com.sales.repository.CompanyDao;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Component
 public class CompanyService {
 
     private CompanyDao companyDao;
