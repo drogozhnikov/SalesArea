@@ -1,47 +1,49 @@
 package com.sales.controller;
 
 import com.sales.dto.ItemDTO;
-import com.sales.entity.ItemEntity;
 import com.sales.service.ItemService;
-import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.*;
+import com.sales.service.converter.ItemConverter;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/items")
 public class ItemController {
 
     private ItemService itemService;
-    private ModelMapper modelMapper;
+    private ItemConverter converter;
 
-    public ItemController(ItemService itemService, ModelMapper modelMapper) {
+    public ItemController(ItemService itemService, ItemConverter converter) {
         this.itemService = itemService;
-        this.modelMapper = modelMapper;
+        this.converter = converter;
     }
 
     @GetMapping("/all")
     public List<ItemDTO> getAllItems() {
-        List<ItemEntity> entitiesList = itemService.getAllItem();
-        return entitiesList.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+        return converter.convertListToDto(itemService.getAllItem());
     }
 
     @GetMapping("/{id}")
     public ItemDTO getItemById(@PathVariable("id") int id) {
-        return convertToDto(itemService.getItem(id));
+        return converter.convertToDto(itemService.getItem(id));
     }
 
     @PostMapping("/")
     public void createItem(@RequestBody ItemDTO itemDTO) {
-        itemService.addItem(convertToEntity(itemDTO));
+        itemService.addItem(converter.convertToEntity(itemDTO));
     }
 
     @PutMapping("/")
     public void updateItem(@RequestBody ItemDTO itemDTO) {
-        itemService.updateItem(convertToEntity(itemDTO));
+        itemService.updateItem(converter.convertToEntity(itemDTO));
     }
 
     @DeleteMapping("/{id}")
@@ -49,12 +51,4 @@ public class ItemController {
         itemService.deleteItem(id);
     }
 
-
-    private ItemDTO convertToDto(ItemEntity inputEntity) {
-        return modelMapper.map(inputEntity, ItemDTO.class);
-    }
-
-    private ItemEntity convertToEntity(ItemDTO inputDTO) {
-        return modelMapper.map(inputDTO, ItemEntity.class);
-    }
 }

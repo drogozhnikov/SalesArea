@@ -3,7 +3,11 @@ package com.sales.dto;
 import com.sales.entity.CompanyEntity;
 import com.sales.entity.ItemEntity;
 import com.sales.entity.UserEntity;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.sql.Date;
 

@@ -1,47 +1,49 @@
 package com.sales.controller;
 
 import com.sales.dto.CategoryDTO;
-import com.sales.entity.CategoryEntity;
 import com.sales.service.CategoryService;
-import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.*;
+import com.sales.service.converter.CategoryConverter;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController {
 
     private CategoryService categoryService;
-    private ModelMapper modelMapper;
+    private CategoryConverter converter;
 
-    public CategoryController(CategoryService categoryService, ModelMapper modelMapper) {
+    public CategoryController(CategoryService categoryService, CategoryConverter converter) {
         this.categoryService = categoryService;
-        this.modelMapper = modelMapper;
+        this.converter = converter;
     }
 
     @GetMapping("/all")
     public List<CategoryDTO> getAllCategories() {
-        List<CategoryEntity> entitiesList = categoryService.getAllCategory();
-        return entitiesList.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+        return converter.convertListToDto(categoryService.getAllCategory());
     }
 
     @GetMapping("/{id}")
     public CategoryDTO getCategoryById(@PathVariable("id") int id) {
-        return convertToDto(categoryService.getCategory(id));
+        return converter.convertToDto(categoryService.getCategory(id));
     }
 
     @PostMapping("/")
     public void createCategory(@RequestBody CategoryDTO categoryDTO) {
-        categoryService.addCategory(convertToEntity(categoryDTO));
+        categoryService.addCategory(converter.convertToEntity(categoryDTO));
     }
 
     @PutMapping("/")
     public void updateCategory(@RequestBody CategoryDTO categoryDTO) {
-        categoryService.updateCategory(convertToEntity(categoryDTO));
+        categoryService.updateCategory(converter.convertToEntity(categoryDTO));
     }
 
     @DeleteMapping("/{id}")
@@ -49,13 +51,4 @@ public class CategoryController {
         categoryService.deleteCategory(id);
     }
 
-
-
-    private CategoryDTO convertToDto(CategoryEntity inputEntity) {
-        return modelMapper.map(inputEntity, CategoryDTO.class);
-    }
-
-    private CategoryEntity convertToEntity(CategoryDTO inputDTO) {
-        return modelMapper.map(inputDTO, CategoryEntity.class);
-    }
 }
