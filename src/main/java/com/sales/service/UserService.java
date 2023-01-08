@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
+@Transactional
 public class UserService {
 
     private UserDao userDao;
@@ -18,27 +19,22 @@ public class UserService {
         this.messageService = messageService;
     }
 
-    @Transactional
     public List<UserEntity> getAllUsers() {
         return userDao.getAllUsers();
     }
 
-    @Transactional
     public UserEntity getUser(int id) {
         return userDao.getUser(id);
     }
 
-    @Transactional
     public void addUser(UserEntity userEntity) {
         userDao.addUser(userEntity);
     }
 
-    @Transactional
     public void updateUser(UserEntity userEntity) {
         userDao.updateUser(userEntity);
     }
 
-    @Transactional
     public void deleteUser(int id) {
         userDao.deleteUser(id);
     }

@@ -41,7 +41,6 @@ public class HibernateConfig {
     }
 
     private final Properties hibernateProperties() {
-        final Properties hibernateProperties = new Properties();
-        return hibernateProperties;
+        return new Properties();
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
+@Transactional
 public class ItemService {
 
     private ItemDao itemDao;
@@ -18,27 +19,22 @@ public class ItemService {
         this.messageService = messageService;
     }
 
-    @Transactional
     public List<ItemEntity> getAllItem() {
         return itemDao.getAllItem();
     }
 
-    @Transactional
     public ItemEntity getItem(int id) {
         return itemDao.getItem(id);
     }
 
-    @Transactional
     public void addItem(ItemEntity itemEntity) {
         itemDao.addItem(itemEntity);
     }
 
-    @Transactional
     public void updateItem(ItemEntity itemEntity) {
         itemDao.updateItem(itemEntity);
     }
 
-    @Transactional
     public void deleteItem(int id) {
         itemDao.deleteItem(id);
     }

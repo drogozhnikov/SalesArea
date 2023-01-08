@@ -26,7 +26,7 @@ public class ItemDaoImpl implements ItemDao {
     @Override
     public ItemEntity getItem(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (ItemEntity) session.get(ItemEntity.class, id);
+        return session.get(ItemEntity.class, id);
     }
 
     @Override

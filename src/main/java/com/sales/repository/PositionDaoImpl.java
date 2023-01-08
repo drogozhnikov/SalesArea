@@ -26,7 +26,7 @@ public class PositionDaoImpl implements PositionDao {
     @Override
     public PositionEntity getPosition(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (PositionEntity) session.get(PositionEntity.class, id);
+        return session.get(PositionEntity.class, id);
     }
 
     @Override
