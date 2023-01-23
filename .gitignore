@@ -69,5 +69,4 @@ buildNumber.properties
 
 # "temporary" build files
 /target
-
-src/main/resources/application-prod.properties
+.gitignore
