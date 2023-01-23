@@ -21,8 +21,8 @@
                 <version>8.5.13</version>
                 <configuration>
                     <user>postgres</user>
-                    <password>4180</password>
-                    <url>jdbc:postgresql://localhost:5432/postgres</url>
+                    <password>postgrespw</password>
+                    <url>jdbc:postgresql://192.168.100.9:55000/postgres</url>
                     <defaultSchema>sales</defaultSchema>
                     <cleanDisabled>false</cleanDisabled>
                 </configuration>
@@ -173,15 +173,15 @@
     <profiles>
         <profile>
             <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <spring.profiles.active>dev</spring.profiles.active>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <spring.profiles.active>prod</spring.profiles.active>
             </properties>
