@@ -3,6 +3,7 @@ package com.sales.controller;
 import com.sales.dto.CategoryDTO;
 import com.sales.service.CategoryService;
 import com.sales.service.converter.CategoryConverter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,26 +28,31 @@ public class CategoryController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("hasAuthority('developers:read')")
     public List<CategoryDTO> getAllCategories() {
         return converter.convertListToDto(categoryService.getAllCategory());
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('developers:read')")
     public CategoryDTO getCategoryById(@PathVariable("id") int id) {
         return converter.convertToDto(categoryService.getCategory(id));
     }
 
     @PostMapping("/")
+    @PreAuthorize("hasAuthority('developers:write')")
     public void createCategory(@RequestBody CategoryDTO categoryDTO) {
         categoryService.addCategory(converter.convertToEntity(categoryDTO));
     }
 
     @PutMapping("/")
+    @PreAuthorize("hasAuthority('developers:write')")
     public void updateCategory(@RequestBody CategoryDTO categoryDTO) {
         categoryService.updateCategory(converter.convertToEntity(categoryDTO));
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('developers:write')")
     public void deleteCategory(@PathVariable("id") int id) {
         categoryService.deleteCategory(id);
     }

@@ -3,6 +3,7 @@ package com.sales.controller;
 import com.sales.dto.UserDTO;
 import com.sales.service.UserService;
 import com.sales.service.converter.UserConverter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,26 +28,31 @@ public class UserController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("hasAuthority('developers:read')")
     public List<UserDTO> getAllUsers() {
         return converter.convertListToDto(userService.getAllUsers());
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('developers:read')")
     public UserDTO getUserById(@PathVariable("id") int id) {
         return converter.convertToDto(userService.getUser(id));
     }
 
     @PostMapping("/")
+    @PreAuthorize("hasAuthority('developers:write')")
     public void createUser(@RequestBody UserDTO userDTO) {
         userService.addUser(converter.convertToEntity(userDTO));
     }
 
     @PutMapping("/")
+    @PreAuthorize("hasAuthority('developers:write')")
     public void updateUser(@RequestBody UserDTO userDTO) {
         userService.updateUser(converter.convertToEntity(userDTO));
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('developers:write')")
     public void deleteUser(@PathVariable("id") int id) {
         userService.deleteUser(id);
     }
