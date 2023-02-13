@@ -1,6 +1,7 @@
 package com.sales.dto;
 
 import com.sales.entity.CompanyEntity;
+import com.sales.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class UserDTO {
     private String name;
 
     @NonNull
-    private String role;
+    private Role role;
 
     @NonNull
     private Date created;

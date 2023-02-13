@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
-
+@Transactional
 public class CategoryService {
 
     private CategoryDao categoryDao;

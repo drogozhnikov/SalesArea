@@ -70,3 +70,4 @@ buildNumber.properties
 # "temporary" build files
 /target
 .gitignore
+pipeline.jenkins
