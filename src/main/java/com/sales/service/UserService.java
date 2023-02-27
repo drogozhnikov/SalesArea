@@ -19,6 +19,10 @@ public class UserService {
         this.messageService = messageService;
     }
 
+    public UserEntity findByUserName(String username){
+        return userDao.findByUserName(username).get();
+    }
+
     public List<UserEntity> getAllUsers() {
         return userDao.getAllUsers();
     }

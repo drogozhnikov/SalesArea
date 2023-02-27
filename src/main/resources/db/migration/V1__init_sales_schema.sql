@@ -11,22 +11,27 @@ DROP TABLE IF EXISTS position;
 CREATE TABLE IF NOT EXISTS company
 (
     id          SERIAL PRIMARY KEY,
-    name        CHAR(100) not null unique,
-    email       CHAR(100) not null,
+    name        VARCHAR(100) not null unique,
+    email       VARCHAR(100) not null,
     created     timestamp not null,
     description text      not null
 );
 
 DROP TYPE IF EXISTS user_role;
-CREATE TYPE user_role AS ENUM ('MANAGER', 'DIRECTOR', 'STORAGE_MANAGER');
+CREATE TYPE user_role AS ENUM ('MANAGER', 'DIRECTOR', 'STORAGE_MANAGER', 'USER');
+
+DROP TYPE IF EXISTS user_status;
+CREATE TYPE user_status AS ENUM ('ACTIVE', 'BANNED');
 
 CREATE TABLE IF NOT EXISTS users
 (
     id         SERIAL PRIMARY KEY,
-    username   CHAR(100) not null unique,
-    email      CHAR(100) not null unique,
-    name       CHAR(100) not null,
-    role       user_role not null,
+    username   VARCHAR(100) not null unique,
+    email      VARCHAR(100) not null unique,
+    name       VARCHAR(100) not null,
+    password   VARCHAR(255) NOT NULL,
+    role       user_role DEFAULT 'USER',
+    status     user_status DEFAULT 'ACTIVE',
     created    timestamp not null,
     updated    timestamp not null,
     company_id int       not null
@@ -35,8 +40,8 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS item
 (
     id          SERIAL PRIMARY KEY,
-    name        CHAR(100) not null,
-    description CHAR(100) not null,
+    name        VARCHAR(100) not null,
+    description VARCHAR(100) not null,
     created     timestamp not null,
     category_id int       not null
 );
@@ -44,9 +49,9 @@ CREATE TABLE IF NOT EXISTS item
 CREATE TABLE IF NOT EXISTS category
 (
     id              SERIAL PRIMARY KEY,
-    name            CHAR(100) not null,
+    name            VARCHAR(100) not null,
     parent_category INT,
-    description     CHAR(100)
+    description     VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS position

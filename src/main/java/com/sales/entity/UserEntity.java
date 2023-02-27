@@ -1,6 +1,7 @@
 package com.sales.entity;
 
 import com.sales.model.Role;
+import com.sales.model.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,9 +32,16 @@ public class UserEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 
     @Column(name = "created")
     private Date created;

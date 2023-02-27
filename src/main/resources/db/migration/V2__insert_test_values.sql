@@ -3,8 +3,8 @@ SET search_path TO sales;
 insert into company(name, email, created, description)
 values ('Company_name', 'company_email', current_timestamp, 'company_description');
 
-insert into users(username, email, name, role, created, updated, company_id)
-values ('User_name', 'user_email', 'name', 'MANAGER', current_timestamp, current_timestamp, 1);
+insert into users(username, email, name, password, role, status, created, updated, company_id)
+values ('user', 'user_email', 'name','$2a$12$D1.ICUpw.7hYZnfml9LL4OHg6SImjzyd8ZIEWl/1tiY3WtQsFWRI6', 'USER', 'ACTIVE', current_timestamp, current_timestamp, 1);
 
 insert into category(name, description)
 values ('Category_name', 'category_description');

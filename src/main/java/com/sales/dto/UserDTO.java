@@ -2,12 +2,16 @@ package com.sales.dto;
 
 import com.sales.entity.CompanyEntity;
 import com.sales.model.Role;
+import com.sales.model.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.sql.Date;
 
 @NoArgsConstructor
@@ -26,10 +30,13 @@ public class UserDTO {
     private String email;
 
     @NonNull
-    private String name;
+    private String password;
 
     @NonNull
     private Role role;
+
+    @NonNull
+    private Status status;
 
     @NonNull
     private Date created;
@@ -51,7 +58,7 @@ public class UserDTO {
     @Override
     public int hashCode() {
         int result = (int)id;
-        int nameValue = name == null ? 0 : name.hashCode() * 31;
+        int nameValue = username == null ? 0 : username.hashCode() * 31;
         int userNameValue = username == null ? 0 : username.hashCode() * 31;
         int emailValue = email == null ? 0 : email.hashCode() * 31;
         result = 31 * result + userNameValue + nameValue + emailValue;

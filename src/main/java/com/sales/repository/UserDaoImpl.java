@@ -1,9 +1,13 @@
 package com.sales.repository;
 
 import com.sales.entity.UserEntity;
+import org.apache.catalina.User;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +19,15 @@ public class UserDaoImpl implements UserDao {
 
     public UserDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+    }
+
+    @Transactional
+    public Optional<UserEntity> findByUserName(String userName){
+        Session session = this.sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(UserEntity.class);
+        criteria.add(Restrictions.eq("username", userName));
+        UserEntity entity = (UserEntity) criteria.list().get(0);
+        return Optional.of(entity);
     }
 
     @Override
